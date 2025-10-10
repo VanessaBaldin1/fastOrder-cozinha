@@ -1,0 +1,29 @@
+.header {
+  background-color: var(--brand-blue);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 12px 24px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.navLink {
+  color: #e0e0e0;
+  transition: color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+  color: white;
+}
+
+.activeLink {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+  padding-bottom: 12px;
+  color: white;
+}

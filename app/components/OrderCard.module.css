@@ -1,0 +1,92 @@
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 360px; /* Largura fixa para os cards */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  background-color: var(--light-gray);
+  padding: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--medium-gray);
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.positionBadge {
+  background-color: var(--brand-blue);
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.tableName {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #343a40;
+}
+
+.orderNumber {
+  background-color: var(--brand-purple);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  padding: 4px 16px;
+}
+
+.itemsList {
+  /* Divide os itens com uma linha */
+}
+
+.itemsList > div:not(:last-child) {
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.buttonGroup {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background-color: var(--light-gray);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: auto; /* Empurra os botões para baixo */
+}
+
+.button {
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 12px 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.buttonPronto {
+  background-color: var(--brand-purple);
+}
+
+.buttonEntregue {
+  background-color: var(--brand-green);
+}

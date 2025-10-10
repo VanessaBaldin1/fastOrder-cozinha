@@ -1,0 +1,71 @@
+.itemContainer {
+  padding: 12px 16px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-right: 12px;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.details {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.tagsContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.statusTag {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+}
+
+.tagP {
+  background-color: var(--brand-purple);
+}
+
+.tagE {
+  background-color: var(--brand-green);
+}
+
+.itemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+}
+
+.chefInfo {
+  display: flex;
+  align-items: center;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
