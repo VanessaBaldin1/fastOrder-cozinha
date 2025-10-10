@@ -1,7 +1,7 @@
 .card {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   width: 360px; /* Largura fixa para os cards */
   flex-shrink: 0;
   display: flex;
@@ -49,23 +49,16 @@
   padding: 4px 16px;
 }
 
-.itemsList {
-  /* Divide os itens com uma linha */
-}
-
 .itemsList > div:not(:last-child) {
   border-bottom: 1px solid var(--medium-gray);
 }
 
 .buttonGroup {
   padding: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
   background-color: var(--light-gray);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  margin-top: auto; /* Empurra os botões para baixo */
+  margin-top: auto;
 }
 
 .button {

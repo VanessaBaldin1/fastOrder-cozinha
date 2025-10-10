@@ -4,8 +4,7 @@ export interface OrderItemType {
   name: string;
   details: string[];
   chef: string;
-  startTime: string; // Usaremos string para simplificar
-  statusTags: "P"[];
+  startTime: string;
 }
 
 export interface OrderType {
@@ -30,7 +29,6 @@ export const mockOrders: OrderType[] = [
         details: [],
         chef: "Marcus",
         startTime: "0h 11m 29s",
-        statusTags: ["P"],
       },
       {
         id: 102,
@@ -39,7 +37,6 @@ export const mockOrders: OrderType[] = [
         details: ["+ Cheddar Premium"],
         chef: "Marcus",
         startTime: "0h 10m 43s",
-        statusTags: ["P"],
       },
     ],
   },
@@ -56,7 +53,6 @@ export const mockOrders: OrderType[] = [
         details: ["*REMOVER Queijo Cheddar"],
         chef: "Marcus",
         startTime: "0h 9m 13s",
-        statusTags: ["P"],
       },
       {
         id: 202,
@@ -65,7 +61,6 @@ export const mockOrders: OrderType[] = [
         details: ["+ Cheddar Premium"],
         chef: "Marcus",
         startTime: "0h 9m 8s",
-        statusTags: ["P"],
       },
     ],
   },
@@ -86,7 +81,6 @@ export const mockOrders: OrderType[] = [
         ],
         chef: "Marcus",
         startTime: "0h 7m 4s",
-        statusTags: ["P"],
       },
     ],
   },
@@ -103,7 +97,6 @@ export const mockOrders: OrderType[] = [
         details: ["Carne Seca com Cheddar"],
         chef: "Marcus",
         startTime: "0h 5m 15s",
-        statusTags: ["P"],
       },
       {
         id: 402,
@@ -112,7 +105,6 @@ export const mockOrders: OrderType[] = [
         details: [],
         chef: "Marcus",
         startTime: "0h 5m 12s",
-        statusTags: ["P"],
       },
     ],
   },
@@ -129,7 +121,6 @@ export const mockOrders: OrderType[] = [
         details: ["Carne Seca com Cheddar"],
         chef: "Marcus",
         startTime: "0h 5m 15s",
-        statusTags: ["P"],
       },
       {
         id: 402,
@@ -138,7 +129,6 @@ export const mockOrders: OrderType[] = [
         details: [],
         chef: "Marcus",
         startTime: "0h 5m 12s",
-        statusTags: ["P"],
       },
     ],
   },
@@ -155,7 +145,6 @@ export const mockOrders: OrderType[] = [
         details: ["Carne Seca com Cheddar"],
         chef: "Marcus",
         startTime: "0h 5m 15s",
-        statusTags: ["P"],
       },
       {
         id: 402,
@@ -164,7 +153,6 @@ export const mockOrders: OrderType[] = [
         details: [],
         chef: "Marcus",
         startTime: "0h 5m 12s",
-        statusTags: ["P"],
       },
     ],
   },

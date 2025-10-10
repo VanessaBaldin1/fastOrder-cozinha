@@ -1,7 +1,7 @@
-import React from 'react';
-import { Clock } from 'lucide-react';
-import { OrderItemType } from '../data/mockOrders';
-import styles from './OrderItem.module.css';
+import React from "react";
+import { Clock } from "lucide-react";
+import { OrderItemType } from "../data/mockOrders";
+import styles from "./OrderItem.module.css";
 
 interface OrderItemProps {
   item: OrderItemType;
@@ -16,19 +16,11 @@ const OrderItem: React.FC<OrderItemProps> = ({ item }) => {
           <div>
             <p className={styles.name}>{item.name}</p>
             {item.details.map((detail, index) => (
-              <p key={index} className={styles.details}>{detail}</p>
+              <p key={index} className={styles.details}>
+                {detail}
+              </p>
             ))}
           </div>
-        </div>
-        <div className={styles.tagsContainer}>
-          {item.statusTags.map((tag, index) => (
-             <span 
-               key={index} 
-               className={`${styles.statusTag} ${tag === 'P' ? styles.tagP : styles.tagE}`}
-             >
-              {tag}
-            </span>
-          ))}
         </div>
       </div>
       <div className={styles.itemFooter}>
