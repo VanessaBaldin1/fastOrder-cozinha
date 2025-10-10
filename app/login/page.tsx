@@ -10,7 +10,7 @@ export default function LoginPage() {
         <form className={styles.form}>
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.label}>
-              Usuário
+              Login
             </label>
             <input
               id="email"
@@ -18,7 +18,7 @@ export default function LoginPage() {
               type="email"
               required
               className={styles.input}
-              placeholder="seu.usuario"
+              placeholder="seu_usuário"
             />
           </div>
           <div className={styles.formGroup}>
