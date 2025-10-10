@@ -1,11 +1,11 @@
 import Link from "next/link";
-import styles from './Login.module.css';
+import styles from "./Login.module.css";
 
 export default function LoginPage() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h1 className={styles.title}>PizzariaM</h1>
+        <h1 className={styles.title}>FastOrder-Cozinha</h1>
         <h2 className={styles.subtitle}>Acesso ao Sistema</h2>
         <form className={styles.form}>
           <div className={styles.formGroup}>
@@ -36,7 +36,7 @@ export default function LoginPage() {
           </div>
           <div>
             <Link href="/kitchen" passHref>
-               <button type="submit" className={styles.button}>
+              <button type="submit" className={styles.button}>
                 Entrar
               </button>
             </Link>
