@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import styles from './NotFound.module.css'; // Importe os estilos
+import Link from "next/link";
+import styles from "./NotFound.module.css";
 
 export default function NotFound() {
   return (
@@ -10,7 +10,7 @@ export default function NotFound() {
         Desculpe, a página que você está procurando não existe.
       </p>
       <Link href="/kitchen" className={styles.link}>
-          Voltar para o Monitor
+        Voltar para o Monitor
       </Link>
     </div>
   );

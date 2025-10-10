@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PizzariaM - Monitor de Produção",
+  title: "FastOrder-Cozinha - Monitor de Produção",
   description: "Monitor de pedidos da cozinha",
 };
 
