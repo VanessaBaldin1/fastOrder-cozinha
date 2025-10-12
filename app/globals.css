@@ -8,6 +8,10 @@
   --background-color: #f0f2f5;
   --text-primary: #212529;
   --text-secondary: #6c757d;
+
+  /* As fontes agora são definidas aqui, mas o Next.js já as injeta */
+  --font-poppins: "Poppins", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 }
 
 * {
@@ -30,4 +34,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins);
 }

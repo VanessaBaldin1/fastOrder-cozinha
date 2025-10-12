@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], 
+  display: 'swap',
+  variable: '--font-roboto', 
+});
+
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600", "700"], 
+  display: 'swap',
+  variable: '--font-poppins', 
+});
 
 export const metadata: Metadata = {
-  title: "FastOrder-Cozinha - Monitor de Produção",
+  title: "FastOrder- Cozinha - Monitor de Produção",
   description: "Monitor de pedidos da cozinha",
 };
 
@@ -16,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+      <body className={`${roboto.className} ${poppins.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
