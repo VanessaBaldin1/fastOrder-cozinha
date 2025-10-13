@@ -1,0 +1,107 @@
+/* Estilos para a página de Cadastro, baseados no layout fornecido */
+
+.containerPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Um cinza bem claro para o fundo */
+  padding: 20px;
+}
+
+.cartao {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  background-color: var(--background-color); /* Branco */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tituloPrincipal {
+  font-family: var(--font-poppins);
+  font-size: 1.75rem; /* 28px */
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-primary); /* Preto */
+  margin: 0;
+}
+
+.subtitulo {
+  font-family: var(--font-roboto);
+  font-size: 1rem; /* 16px */
+  text-align: center;
+  color: var(--text-secondary); /* Cinza escuro */
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os campos do formulário */
+}
+
+.grupoInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 6px;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brand-primary); /* Borda laranja ao focar */
+  box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+}
+
+.botao {
+  width: 100%;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--brand-primary); /* Laranja */
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 16px;
+}
+
+.botao:hover {
+  background-color: #e68900; /* Laranja um pouco mais escuro */
+}
+
+.linkRodape {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.linkRodape a {
+  font-weight: 600;
+  color: var(--brand-primary); /* Laranja para o link */
+  text-decoration: none;
+}
+
+.linkRodape a:hover {
+  text-decoration: underline;
+}
