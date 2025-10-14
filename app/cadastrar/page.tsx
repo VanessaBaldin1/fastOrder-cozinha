@@ -37,7 +37,6 @@ export default function PaginaCadastro() {
             />
           </div>
 
-          {/* Campo para a senha */}
           <div className={estilos.grupoInput}>
             <label htmlFor="senha" className={estilos.label}>
               Senha
@@ -52,13 +51,11 @@ export default function PaginaCadastro() {
             />
           </div>
 
-          {/* Botão de ação principal */}
           <button type="submit" className={estilos.botao}>
             Cadastrar
           </button>
         </form>
 
-        {/* Link para voltar ao login, caso o usuário já tenha conta */}
         <p className={estilos.linkRodape}>
           Já tem uma conta? <Link href="/entrar">Acesse aqui</Link>
         </p>
