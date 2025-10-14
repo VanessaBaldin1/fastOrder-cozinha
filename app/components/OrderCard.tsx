@@ -9,7 +9,7 @@ interface OrderItemType {
   preco: number;
   status: string;
   tempo_preparo: number;
-  criado_em: string;
+  created_at: string;
 }
 
 interface Mesa {
@@ -34,16 +34,27 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa }) => {
 
       {/* Lista de itens */}
       <div className={styles.itemsList}>
-        {mesa.itens.map((item) => (
-          <div key={item.id}>
-            {item.quantidade}x {item.item_nome} - R${item.preco.toFixed(2)}
-          </div>
-        ))}
+        {mesa.itens.map((item) => {
+          const data = new Date(item.created_at);
+          const horaFormatada = data.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          return (
+            <div key={item.id}>
+              {item.quantidade}x {item.item_nome} - R${item.preco.toFixed(2)} -{" "}
+              {horaFormatada}
+            </div>
+          );
+        })}
       </div>
 
       {/* Botão */}
       <div className={styles.buttonGroup}>
-        <button className={`${styles.button} ${styles.buttonPronto}`}>PRONTO</button>
+        <button className={`${styles.button} ${styles.buttonPronto}`}>
+          PRONTO
+        </button>
       </div>
     </div>
   );

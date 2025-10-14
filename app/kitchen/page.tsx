@@ -13,7 +13,7 @@ interface OrderItemType {
   preco: number;
   status: string;
   tempo_preparo: number;
-  criado_em: string;
+  created_at: string;
 }
 
 interface Mesa {
