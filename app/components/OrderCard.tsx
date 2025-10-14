@@ -43,7 +43,9 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa }) => {
 
       {/* Botão */}
       <div className={styles.buttonGroup}>
-        <button className={`${styles.button} ${styles.buttonPronto}`}>PRONTO</button>
+        <button className={`${styles.button} ${styles.buttonPronto}`}>
+          PRONTO
+        </button>
       </div>
     </div>
   );

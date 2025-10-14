@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import OrderCard from "../components/OrderCard";
-import styles from './Kitchen.module.css';
+import styles from "./Kitchen.module.css";
 import { buscarPedidos } from "../lib/ordersService";
+import ProntoButton from "../components/ProntoButton"; // ✅ novo componente
 
 // Tipagem das mesas e itens
 interface OrderItemType {
@@ -25,6 +26,7 @@ export default function KitchenPage() {
   const [pedidos, setPedidos] = useState<Mesa[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // 🔹 Função já existente
   useEffect(() => {
     async function exibirPedidos() {
       const mesas = await buscarPedidos();
@@ -35,6 +37,15 @@ export default function KitchenPage() {
     exibirPedidos();
   }, []);
 
+  // 🔹 Função NOVA (somente adicionada, não interfere na lógica existente)
+  async function handleProntoClick() {
+    // Aqui você pode chamar a função de atualizar o status no Supabase
+    // Exemplo:
+    // await atualizarStatusPedido(mesaId, "pronto");
+    await new Promise((resolve) => setTimeout(resolve, 800)); // simula tempo de requisição
+    console.log("Pedido marcado como pronto!");
+  }
+
   if (loading) return <div>Carregando pedidos...</div>;
 
   return (
@@ -43,7 +54,17 @@ export default function KitchenPage() {
       <main className={styles.main}>
         <div className={styles.cardsContainer}>
           {pedidos.map((mesa) => (
-            <OrderCard key={mesa.mesa_id} mesa={mesa} />
+            <div key={mesa.mesa_id} className={styles.cardWrapper}>
+              {/* Mantém seu OrderCard original */}
+              <OrderCard mesa={mesa} />
+
+              {/* ✅ Botão de feedback visual + toast */}
+              <div style={{ marginTop: "12px", textAlign: "center" }}>
+                <ProntoButton onPronto={handleProntoClick}>
+                  Marcar como Pronto
+                </ProntoButton>
+              </div>
+            </div>
           ))}
         </div>
       </main>
