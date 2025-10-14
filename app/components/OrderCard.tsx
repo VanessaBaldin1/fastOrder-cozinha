@@ -1,39 +1,49 @@
 import React from "react";
-import { OrderType } from "../data/mockOrders";
-import OrderItem from "./OrderItem";
 import styles from "./OrderCard.module.css";
 
-interface OrderCardProps {
-  order: OrderType;
+// Tipagem dos itens e mesa
+interface OrderItemType {
+  id: number;
+  item_nome: string;
+  quantidade: number;
+  preco: number;
+  status: string;
+  tempo_preparo: number;
+  criado_em: string;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
-  const getPositionSuffix = (position: number) => {
-    return `${position}º`;
-  };
+interface Mesa {
+  mesa_id: number | string;
+  itens: OrderItemType[];
+}
 
+interface OrderCardProps {
+  mesa: Mesa;
+}
+
+const OrderCard: React.FC<OrderCardProps> = ({ mesa }) => {
   return (
     <div className={styles.card}>
+      {/* Cabeçalho */}
       <div className={styles.cardHeader}>
         <div className={styles.headerInfo}>
-          <span className={styles.positionBadge}>
-            {getPositionSuffix(order.position)}
-          </span>
-          <span className={styles.tableName}>{order.table}</span>
+          <span className={styles.tableName}>Mesa {mesa.mesa_id}</span>
         </div>
-        <span className={styles.orderNumber}>Ped {order.orderNumber}</span>
+        <span className={styles.orderNumber}>Pedido #{mesa.mesa_id}</span>
       </div>
 
+      {/* Lista de itens */}
       <div className={styles.itemsList}>
-        {order.items.map((item) => (
-          <OrderItem key={item.id} item={item} />
+        {mesa.itens.map((item) => (
+          <div key={item.id}>
+            {item.quantidade}x {item.item_nome} - R${item.preco.toFixed(2)}
+          </div>
         ))}
       </div>
 
+      {/* Botão */}
       <div className={styles.buttonGroup}>
-        <button className={`${styles.button} ${styles.buttonPronto}`}>
-          PRONTO
-        </button>
+        <button className={`${styles.button} ${styles.buttonPronto}`}>PRONTO</button>
       </div>
     </div>
   );
