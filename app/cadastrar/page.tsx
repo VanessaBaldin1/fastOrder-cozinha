@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import estilos from "./PaginaCadastro.module.css";
+import { useEffect } from "react";
 
 export default function PaginaCadastro() {
   const roteador = useRouter();
@@ -14,6 +15,8 @@ export default function PaginaCadastro() {
 
     roteador.push("/entrar");
   };
+
+  useEffect(() => {}, []);
 
   return (
     <div className={estilos.containerPrincipal}>
@@ -64,13 +67,21 @@ export default function PaginaCadastro() {
             />
           </div>
 
+          {/* Botão de cadastro */}
           <button type="submit" className={estilos.botao}>
             Cadastrar
           </button>
+
+          {/* Botão de login, mesma paleta, abaixo do cadastro */}
+          <Link href="/login" passHref>
+            <button type="button" className={estilos.botao}>
+              Já tem conta? Entrar
+            </button>
+          </Link>
         </form>
 
         <p className={estilos.linkRodape}>
-          Já tem uma conta? <Link href="/entrar">Acesse aqui</Link>
+          Ou acesse: <Link href="/login">Login</Link>
         </p>
       </div>
     </div>
