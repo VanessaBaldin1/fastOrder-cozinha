@@ -1,11 +1,9 @@
-/* Estilos para a página de Cadastro, baseados no layout fornecido */
-
 .containerPrincipal {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f0f2f5; /* Um cinza bem claro para o fundo */
+  background-color: #f0f2f5;
   padding: 20px;
 }
 
@@ -13,7 +11,7 @@
   width: 100%;
   max-width: 420px;
   padding: 40px;
-  background-color: var(--background-color); /* Branco */
+  background-color: var(--background-color);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
