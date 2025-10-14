@@ -1,14 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import estilos from "./PaginaCadastro.module.css";
+import { useEffect } from "react";
 
 export default function PaginaCadastro() {
+  const roteador = useRouter();
+
+  const lidarComCadastro = (evento: React.FormEvent) => {
+    evento.preventDefault();
+
+    console.log("Formulário enviado! Redirecionando para o login...");
+
+    roteador.push("/entrar");
+  };
+
+  useEffect(() => {}, []);
+
   return (
     <div className={estilos.containerPrincipal}>
       <div className={estilos.cartao}>
         <h1 className={estilos.tituloPrincipal}>FastOrder - Cozinha</h1>
         <h2 className={estilos.subtitulo}>Crie sua conta de acesso</h2>
 
-        <form className={estilos.formulario}>
+        <form className={estilos.formulario} onSubmit={lidarComCadastro}>
           <div className={estilos.grupoInput}>
             <label htmlFor="nome" className={estilos.label}>
               Nome Completo
@@ -51,13 +67,21 @@ export default function PaginaCadastro() {
             />
           </div>
 
+          {/* Botão de cadastro */}
           <button type="submit" className={estilos.botao}>
             Cadastrar
           </button>
+
+          {/* Botão de login, mesma paleta, abaixo do cadastro */}
+          <Link href="/login" passHref>
+            <button type="button" className={estilos.botao}>
+              Já tem conta? Entrar
+            </button>
+          </Link>
         </form>
 
         <p className={estilos.linkRodape}>
-          Já tem uma conta? <Link href="/entrar">Acesse aqui</Link>
+          Ou acesse: <Link href="/login">Login</Link>
         </p>
       </div>
     </div>

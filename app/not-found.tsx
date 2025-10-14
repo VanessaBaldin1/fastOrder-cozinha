@@ -9,8 +9,8 @@ export default function NotFound() {
       <p className={styles.message}>
         Desculpe, a página que você está procurando não existe.
       </p>
-      <Link href="/kitchen" className={styles.link}>
-        Voltar para o Monitor
+      <Link href="/login" className={styles.link}>
+        Voltar para o login
       </Link>
     </div>
   );

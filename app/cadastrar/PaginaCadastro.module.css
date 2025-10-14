@@ -72,19 +72,17 @@
 .botao {
   width: 100%;
   padding: 12px;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 600;
   color: white;
-  background-color: var(--brand-primary); /* Laranja */
+  background-color: var(--brand-blue);
   border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 16px;
 }
 
 .botao:hover {
-  background-color: #e68900; /* Laranja um pouco mais escuro */
+  background-color: #e68900;
 }
 
 .linkRodape {
@@ -96,7 +94,7 @@
 
 .linkRodape a {
   font-weight: 600;
-  color: var(--brand-primary); /* Laranja para o link */
+  color: var(--brand-primary);
   text-decoration: none;
 }
 

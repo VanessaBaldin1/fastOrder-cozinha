@@ -7,6 +7,7 @@ export default function LoginPage() {
       <div className={styles.card}>
         <h1 className={styles.title}>FastOrder-Cozinha</h1>
         <h2 className={styles.subtitle}>Acesso ao Sistema</h2>
+
         <form className={styles.form}>
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.label}>
@@ -21,6 +22,7 @@ export default function LoginPage() {
               placeholder="seu_usuário"
             />
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="password" className={styles.label}>
               Senha
@@ -34,10 +36,19 @@ export default function LoginPage() {
               placeholder="••••••••"
             />
           </div>
+
           <div>
             <Link href="/kitchen" passHref>
               <button type="submit" className={styles.button}>
                 Entrar
+              </button>
+            </Link>
+          </div>
+
+          <div>
+            <Link href="/cadastrar" passHref>
+              <button type="button" className={styles.button}>
+                Cadastrar
               </button>
             </Link>
           </div>

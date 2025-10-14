@@ -5,6 +5,12 @@
   padding: 12px 24px;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -26,4 +32,23 @@
   border-bottom: 2px solid white;
   padding-bottom: 12px;
   color: white;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: white;
+  color: var(--brand-blue);
 }
