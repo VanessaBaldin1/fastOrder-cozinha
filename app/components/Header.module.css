@@ -5,7 +5,6 @@
   padding: 12px 24px;
 }
 
-/* Container principal da navegação */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -35,7 +34,6 @@
   color: white;
 }
 
-/* Botão de sair no canto superior direito */
 .logoutButton {
   display: flex;
   align-items: center;
