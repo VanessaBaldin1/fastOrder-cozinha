@@ -19,6 +19,7 @@ interface OrderItemType {
 
 interface Mesa {
   mesa_id: number | string;
+  pedido_uuid: string; // adiciona aqui
   itens: OrderItemType[];
 }
 
@@ -54,11 +55,8 @@ export default function KitchenPage() {
       <main className={styles.main}>
         <div className={styles.cardsContainer}>
           {pedidos.map((mesa) => (
-            <div key={mesa.mesa_id} className={styles.cardWrapper}>
-              {/* Mantém seu OrderCard original */}
+            <div key={mesa.pedido_uuid} className={styles.cardWrapper}>
               <OrderCard mesa={mesa} />
-
-              {/* ✅ Botão de feedback visual + toast */}
               <div style={{ marginTop: "12px", textAlign: "center" }}>
                 <ProntoButton onPronto={handleProntoClick}>
                   Marcar como Pronto

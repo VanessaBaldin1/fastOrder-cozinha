@@ -13,16 +13,16 @@ export async function buscarPedidos() {
 
   const grupo = {};
 
-  data.forEach((item) => {
-    if (!grupo[item.pedido_uuid]) {
-      grupo[item.pedido_uuid] = {
-        pedido_uuid: item.pedido_uuid,
-        mesa_id: item.mesa_id,
-        itens: [],
-      };
-    }
-    grupo[item.pedido_uuid].itens.push(item);
-  });
+data.forEach((item) => {
+  if (!grupo[item.pedido_uuid]) {
+    grupo[item.pedido_uuid] = {
+      pedido_uuid: item.pedido_uuid,
+      mesa_id: item.mesa_id,
+      itens: [],
+    };
+  }
+  grupo[item.pedido_uuid].itens.push(item);
+});
 
-  return Object.values(grupo);
+return Object.values(grupo);
 }

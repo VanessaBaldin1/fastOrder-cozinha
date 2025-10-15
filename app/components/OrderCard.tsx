@@ -14,6 +14,7 @@ interface OrderItemType {
 
 interface Mesa {
   mesa_id: number | string;
+  pedido_uuid: string; // adiciona aqui
   itens: OrderItemType[];
 }
 
@@ -29,7 +30,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa }) => {
         <div className={styles.headerInfo}>
           <span className={styles.tableName}>Mesa {mesa.mesa_id}</span>
         </div>
-        <span className={styles.orderNumber}>Pedido #{mesa.mesa_id}</span>
+        <span className={styles.orderNumber}>Pedido #{mesa.pedido_uuid}</span>
       </div>
 
       {/* Lista de itens */}
