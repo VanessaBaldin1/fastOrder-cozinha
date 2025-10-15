@@ -1,13 +1,13 @@
+// app/kitchen/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import OrderCard from "../components/OrderCard";
 import styles from "./Kitchen.module.css";
 import { buscarPedidos } from "../lib/ordersService";
-import ProntoButton from "../components/ProntoButton"; // ✅ novo componente
 import { supabase } from "../lib/supabase";
 
-// Tipagem das mesas e itens
+
 interface OrderItemType {
   id: number;
   item_nome: string;
@@ -20,7 +20,7 @@ interface OrderItemType {
 
 interface Mesa {
   mesa_id: number | string;
-  pedido_uuid: string; // adiciona aqui
+  pedido_uuid: string;
   itens: OrderItemType[];
 }
 
@@ -28,50 +28,40 @@ export default function KitchenPage() {
   const [pedidos, setPedidos] = useState<Mesa[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Função já existente
+  // Sua lógica existente para buscar dados (sem alterações)
   useEffect(() => {
-    async function exibirPedidos() {
+    async function inicializarPedidos() {
       const mesas = await buscarPedidos();
       setPedidos(mesas);
       setLoading(false);
     }
+    inicializarPedidos();
 
-    exibirPedidos();
+    const channel = supabase
+      .channel("realtime-pedidos")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "pedidos" },
+        () => { buscarPedidos().then(setPedidos); }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
-useEffect(() => {
-  // Carrega pedidos iniciais
-  buscarPedidos().then(setPedidos);
-
-  const channel = supabase
-    .channel("realtime-pedidos")
-    .on(
-      "postgres_changes",
-      {
-        event: "INSERT",
-        schema: "public",
-        table: "pedidos",
-      },
-      (payload) => {
-        console.log("Novo pedido recebido:", payload.new);
-        buscarPedidos().then(setPedidos); // Atualiza toda a lista
-      }
-    )
-    .subscribe();
-
-  return () => {
-    supabase.removeChannel(channel); // Limpa ao desmontar
+  
+  const handlePedidoPronto = (pedidoUuid: string, mesaId: string | number) => {
+    
+    alert(`Refeição da Mesa ${mesaId} está pronta para entrega pelo garçom!`);
+    
+    
+    setPedidos(pedidosAtuais => 
+      pedidosAtuais.filter(p => p.pedido_uuid !== pedidoUuid)
+    );
   };
-}, []);
 
-  // 🔹 Função NOVA (somente adicionada, não interfere na lógica existente)
-  async function handleProntoClick() {
-    // Aqui você pode chamar a função de atualizar o status no Supabase
-    // Exemplo:
-    // await atualizarStatusPedido(mesaId, "pronto");
-    await new Promise((resolve) => setTimeout(resolve, 800)); // simula tempo de requisição
-    console.log("Pedido marcado como pronto!");
-  }
 
   if (loading) return <div>Carregando pedidos...</div>;
 
@@ -79,16 +69,20 @@ useEffect(() => {
     <div className={styles.page}>
       <Header />
       <main className={styles.main}>
+     
+        <div className={styles.pageHeader}>
+          <h1 className={styles.title}>Pedidos por mesas</h1>
+          <p className={styles.subtitle}>Pedidos aguardando na cozinha</p>
+        </div>
+
         <div className={styles.cardsContainer}>
           {pedidos.map((mesa) => (
-            <div key={mesa.pedido_uuid} className={styles.cardWrapper}>
-              <OrderCard mesa={mesa} />
-              <div style={{ marginTop: "12px", textAlign: "center" }}>
-                <ProntoButton onPronto={handleProntoClick}>
-                  Marcar como Pronto
-                </ProntoButton>
-              </div>
-            </div>
+         
+            <OrderCard 
+              key={mesa.pedido_uuid} 
+              mesa={mesa} 
+              onPedidoPronto={handlePedidoPronto} 
+            />
           ))}
         </div>
       </main>
