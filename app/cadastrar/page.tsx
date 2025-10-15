@@ -13,7 +13,7 @@ export default function PaginaCadastro() {
 
     console.log("Formulário enviado! Redirecionando para o login...");
 
-    roteador.push("/entrar");
+    roteador.push("/login");
   };
 
   useEffect(() => {}, []);
@@ -67,12 +67,12 @@ export default function PaginaCadastro() {
             />
           </div>
 
-          {/* Botão de cadastro */}
+         
           <button type="submit" className={estilos.botao}>
             Cadastrar
           </button>
 
-          {/* Botão de login, mesma paleta, abaixo do cadastro */}
+     
           <Link href="/login" passHref>
             <button type="button" className={estilos.botao}>
               Já tem conta? Entrar
