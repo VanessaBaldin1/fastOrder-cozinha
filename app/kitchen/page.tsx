@@ -5,6 +5,7 @@ import OrderCard from "../components/OrderCard";
 import styles from "./Kitchen.module.css";
 import { buscarPedidos } from "../lib/ordersService";
 import ProntoButton from "../components/ProntoButton"; // ✅ novo componente
+import { supabase } from "../lib/supabase";
 
 // Tipagem das mesas e itens
 interface OrderItemType {
@@ -37,6 +38,31 @@ export default function KitchenPage() {
 
     exibirPedidos();
   }, []);
+
+useEffect(() => {
+  // Carrega pedidos iniciais
+  buscarPedidos().then(setPedidos);
+
+  const channel = supabase
+    .channel("realtime-pedidos")
+    .on(
+      "postgres_changes",
+      {
+        event: "INSERT",
+        schema: "public",
+        table: "pedidos",
+      },
+      (payload) => {
+        console.log("Novo pedido recebido:", payload.new);
+        buscarPedidos().then(setPedidos); // Atualiza toda a lista
+      }
+    )
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel); // Limpa ao desmontar
+  };
+}, []);
 
   // 🔹 Função NOVA (somente adicionada, não interfere na lógica existente)
   async function handleProntoClick() {
