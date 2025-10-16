@@ -52,3 +52,38 @@
   background-color: white;
   color: var(--brand-blue);
 }
+
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem; 
+}
+
+/* Estilo para o novo link de Acesso Restrito */
+.restrictedAccessLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #5a67d8; 
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none; 
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.restrictedAccessLink:hover {
+  background-color: #434190;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}

@@ -1,9 +1,11 @@
+// src/components/Header/Header.tsx
+
 "use client";
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { LogOut } from "lucide-react";
+import { LogOut, Lock } from "lucide-react"; 
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -31,10 +33,18 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          <LogOut size={18} strokeWidth={2} />
-          <span>Sair</span>
-        </button>
+
+        <div className={styles.actionsContainer}>
+          <Link href="/admin" className={styles.restrictedAccessLink}>
+            <Lock size={18} strokeWidth={2} />
+            <span>Acesso Restrito</span>
+          </Link>
+
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            <LogOut size={18} strokeWidth={2} />
+            <span>Sair</span>
+          </button>
+        </div>
       </nav>
     </header>
   );
