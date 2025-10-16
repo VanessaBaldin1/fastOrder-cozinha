@@ -38,33 +38,59 @@ function formatarTempo(totalSegundos: number): string {
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({ mesa, onPedidoPronto }) => {
+// Estado para o tempo decorrido e a cor do header
 
-  // Lógica do temporizador
-  const [tempoDecorrido, setTempoDecorrido] = useState("00:00:00");
+const TEMPO_TOTAL = 30 * 60; // 30 minutos em segundos
 
-  useEffect(() => {
-    // Pega a data de criação do item mais antigo como referência
-    const startTime = new Date(mesa.itens[0].created_at).getTime();
+const [tempoRestante, setTempoRestante] = useState(TEMPO_TOTAL); // em segundos
+const [headerClass, setHeaderClass] = useState(styles.green);
 
-    // Atualiza o relógio a cada segundo
-    const intervalId = setInterval(() => {
-      const diffEmSegundos = (Date.now() - startTime) / 1000;
-      setTempoDecorrido(formatarTempo(diffEmSegundos));
-    }, 1000);
 
-    // Limpa o relógio quando o card some da tela para economizar memória
-    return () => clearInterval(intervalId);
-  }, [mesa.itens]);
+// Função para formatar o tempo
+const formatarTempo = (segundos: number) => {
+  const m = Math.floor(segundos / 60)
+    .toString()
+    .padStart(2, "0");
+  const s = Math.floor(segundos % 60)
+    .toString()
+    .padStart(2, "0");
+  return `${m}:${s}`;
+};
+
+
+useEffect(() => {
+  // Pega a data de criação do item mais antigo e força UTC
+  const startTime = new Date(mesa.itens[0].created_at + "Z").getTime();
+
+  const intervalId = setInterval(() => {
+    const diffEmSegundos = Math.floor((Date.now() - startTime) / 1000);
+    const restante = TEMPO_TOTAL - diffEmSegundos;
+
+    // Atualiza o tempo restante (não deixa negativo)
+    setTempoRestante(restante > 0 ? restante : 0);
+
+    // Atualiza a cor do header conforme o tempo restante
+    if (restante > 20 * 60) {
+      setHeaderClass(styles.green);
+    } else if (restante > 10 * 60) {
+      setHeaderClass(styles.yellow);
+    } else {
+      setHeaderClass(styles.red);
+    }
+  }, 1000);
+
+  return () => clearInterval(intervalId);
+}, [mesa.itens]);
 
   return (
     <div className={styles.card}>
       {/* Cabeçalho ATUALIZADO com o temporizador no meio */}
-      <div className={styles.cardHeader}>
+      <div className={`${styles.cardHeader} ${headerClass}`}>
         <span className={styles.tableName}>Mesa {mesa.mesa_id}</span>
         
         <div className={styles.timer}>
             <Clock size={16} />
-            <span>{tempoDecorrido}</span>
+            <span>{formatarTempo(tempoRestante)}</span>
         </div>
 
         <span className={styles.orderNumber}>#{mesa.pedido_uuid.substring(0, 8)}</span>

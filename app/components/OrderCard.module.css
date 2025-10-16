@@ -9,7 +9,6 @@
 }
 
 .cardHeader {
-  background-color: var(--light-gray);
   padding: 12px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -17,6 +16,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--medium-gray);
+  transition: background-color 0.3s ease;
 }
 
 .headerInfo {
@@ -50,6 +50,7 @@
 }
 
 .itemsList > div:not(:last-child) {
+ 
   border-bottom: 1px solid var(--medium-gray);
 }
 
@@ -82,4 +83,20 @@
 
 .buttonEntregue {
   background-color: var(--brand-green);
+}
+
+/* Cores dinâmicas do temporizador */
+.green {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+.yellow {
+  background-color: #ffb300; /* Amarelo */
+  color: white;
+}
+
+.red {
+  background-color: #f44336; /* Vermelho */
+  color: white;
 }
