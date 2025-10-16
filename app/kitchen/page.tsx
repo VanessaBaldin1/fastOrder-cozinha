@@ -6,7 +6,6 @@ import styles from "./Kitchen.module.css";
 import { buscarPedidos } from "../lib/ordersService";
 import { supabase } from "../lib/supabase";
 
-
 interface OrderItemType {
   id: number;
   item_nome: string;
@@ -27,7 +26,11 @@ export default function KitchenPage() {
   const [pedidos, setPedidos] = useState<Mesa[]>([]);
   const [loading, setLoading] = useState(true);
 
- 
+  const tocarCampainha = () => {
+    const audio = new Audio("/campainha.mp3");
+    audio.play().catch((err) => console.error("Erro ao tocar som:", err));
+  };
+
   useEffect(() => {
     async function inicializarPedidos() {
       const mesas = await buscarPedidos();
@@ -41,7 +44,11 @@ export default function KitchenPage() {
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "pedidos" },
-        () => { buscarPedidos().then(setPedidos); }
+        async () => {
+          tocarCampainha();
+          const mesas = await buscarPedidos();
+          setPedidos(mesas);
+        }
       )
       .subscribe();
 
@@ -50,17 +57,13 @@ export default function KitchenPage() {
     };
   }, []);
 
-  
   const handlePedidoPronto = (pedidoUuid: string, mesaId: string | number) => {
-    
     alert(`Refeição da Mesa ${mesaId} está pronta para entrega pelo garçom!`);
-    
-    
-    setPedidos(pedidosAtuais => 
-      pedidosAtuais.filter(p => p.pedido_uuid !== pedidoUuid)
+
+    setPedidos((pedidosAtuais) =>
+      pedidosAtuais.filter((p) => p.pedido_uuid !== pedidoUuid)
     );
   };
-
 
   if (loading) return <div>Carregando pedidos...</div>;
 
@@ -68,7 +71,6 @@ export default function KitchenPage() {
     <div className={styles.page}>
       <Header />
       <main className={styles.main}>
-     
         <div className={styles.pageHeader}>
           <h1 className={styles.title}>Pedidos por mesas</h1>
           <p className={styles.subtitle}>Pedidos aguardando na cozinha</p>
@@ -76,11 +78,10 @@ export default function KitchenPage() {
 
         <div className={styles.cardsContainer}>
           {pedidos.map((mesa) => (
-         
-            <OrderCard 
-              key={mesa.pedido_uuid} 
-              mesa={mesa} 
-              onPedidoPronto={handlePedidoPronto} 
+            <OrderCard
+              key={mesa.pedido_uuid}
+              mesa={mesa}
+              onPedidoPronto={handlePedidoPronto}
             />
           ))}
         </div>
