@@ -2,7 +2,7 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  width: 360px; /* Largura fixa para os cards */
+  width: 360px; 
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -85,18 +85,17 @@
   background-color: var(--brand-green);
 }
 
-/* Cores dinâmicas do temporizador */
 .green {
-  background-color: #4caf50; /* Verde */
+  background-color: #4caf50; 
   color: white;
 }
 
 .yellow {
-  background-color: #ffb300; /* Amarelo */
+  background-color: #ffb300; 
   color: white;
 }
 
 .red {
-  background-color: #f44336; /* Vermelho */
+  background-color: #f44336; 
   color: white;
 }

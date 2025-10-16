@@ -9,7 +9,6 @@
   --text-primary: #212529;
   --text-secondary: #6c757d;
 
-  /* As fontes agora são definidas aqui, mas o Next.js já as injeta */
   --font-poppins: "Poppins", sans-serif;
   --font-roboto: "Roboto", sans-serif;
 }

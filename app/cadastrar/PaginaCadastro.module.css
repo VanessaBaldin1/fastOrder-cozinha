@@ -18,18 +18,18 @@
 
 .tituloPrincipal {
   font-family: var(--font-poppins);
-  font-size: 1.75rem; /* 28px */
+  font-size: 1.75rem; 
   font-weight: 700;
   text-align: center;
-  color: var(--text-primary); /* Preto */
+  color: var(--text-primary); 
   margin: 0;
 }
 
 .subtitulo {
   font-family: var(--font-roboto);
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   text-align: center;
-  color: var(--text-secondary); /* Cinza escuro */
+  color: var(--text-secondary); 
   margin-top: 8px;
   margin-bottom: 32px;
   font-weight: 400;
@@ -38,7 +38,7 @@
 .formulario {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espaço entre os campos do formulário */
+  gap: 20px; 
 }
 
 .grupoInput {
@@ -48,7 +48,7 @@
 
 .label {
   margin-bottom: 6px;
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-secondary);
 }
@@ -65,7 +65,7 @@
 
 .input:focus {
   outline: none;
-  border-color: var(--brand-primary); /* Borda laranja ao focar */
+  border-color: var(--brand-primary);
   box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
 }
 
