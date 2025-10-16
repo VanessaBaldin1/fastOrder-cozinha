@@ -26,3 +26,19 @@ data.forEach((item) => {
 
 return Object.values(grupo);
 }
+
+
+export async function atualizarStatusPedido(pedidoUuid, novoStatus) {
+  const { data, error } = await supabase
+    .from("pedidos")
+    .update({ status: novoStatus })
+    .eq("pedido_uuid", pedidoUuid);
+
+  if (error) {
+    console.error("Erro ao atualizar status:", error);
+    return null;
+  }
+
+  console.log("Status atualizado:", data);
+  return data;
+}

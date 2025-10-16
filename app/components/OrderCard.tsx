@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./OrderCard.module.css";
 import { Clock } from "lucide-react";
+import { atualizarStatusPedido } from "../lib/ordersService";
 
 interface OrderItemType {
   id: number;
@@ -23,14 +24,6 @@ interface Mesa {
 interface OrderCardProps {
   mesa: Mesa;
   onPedidoPronto: (pedidoUuid: string, mesaId: string | number) => void;
-}
-
-function formatarTempo(totalSegundos: number): string {
-  const horas = Math.floor(totalSegundos / 3600);
-  const minutos = Math.floor((totalSegundos % 3600) / 60);
-  const segundos = Math.floor(totalSegundos % 60);
-  const pad = (num: number) => num.toString().padStart(2, "0");
-  return `${pad(horas)}:${pad(minutos)}:${pad(segundos)}`;
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({ mesa, onPedidoPronto }) => {
@@ -81,7 +74,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa, onPedidoPronto }) => {
         </div>
 
         <span className={styles.orderNumber}>
-          #{mesa.pedido_uuid.substring(0, 8)}
+          #{mesa.pedido_uuid.substring(mesa.pedido_uuid.length - 8)}
         </span>
       </div>
 
@@ -97,7 +90,10 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa, onPedidoPronto }) => {
       <div className={styles.buttonGroup}>
         <button
           className={`${styles.button} ${styles.buttonPronto}`}
-          onClick={() => onPedidoPronto(mesa.pedido_uuid, mesa.mesa_id)}
+          onClick={async () => {
+            await atualizarStatusPedido(mesa.pedido_uuid, "pronto");
+            onPedidoPronto(mesa.pedido_uuid, mesa.mesa_id);
+          }}
         >
           PRONTO
         </button>
