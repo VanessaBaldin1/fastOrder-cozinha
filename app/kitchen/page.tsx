@@ -1,4 +1,3 @@
-// app/kitchen/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
@@ -28,7 +27,7 @@ export default function KitchenPage() {
   const [pedidos, setPedidos] = useState<Mesa[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Sua lógica existente para buscar dados (sem alterações)
+ 
   useEffect(() => {
     async function inicializarPedidos() {
       const mesas = await buscarPedidos();
