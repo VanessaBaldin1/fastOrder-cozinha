@@ -81,7 +81,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ mesa, onPedidoPronto }) => {
       <div className={styles.itemsList}>
         {mesa.itens.map((item) => (
           <div key={item.id} className={styles.item}>
-            <span className={styles.itemQuantidade}>{item.quantidade}x</span>
+            <span className={styles.itemQuantidade}>{item.quantidade}x </span>
             <span className={styles.itemNome}>{item.item_nome}</span>
           </div>
         ))}
